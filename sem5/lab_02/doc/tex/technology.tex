@@ -1,0 +1,152 @@
+\chapter{Технологическая часть}
+
+В данном разделе будут указаны средства реализации, будут представлены листинги кода, а также функциональные тесты.
+
+\section{Средства реализации}
+
+Реализация данной лабораторной работы выполнялась при помощи языка программирования Python \cite{python}. Выбор ЯП обусловлен простотой синтаксиса, большим числом библиотек и эффективностью визуализации данных.
+
+Замеры времени проводились при помощи функции process\_time из библиотеки time \cite{python-time}.
+
+\section{Сведения о модулях программы}
+
+Программа состоит из следующих модулей:
+
+\begin{itemize}
+	\item main.py - главный файл программы, предоставляющий пользователю меню для выполнения основных функций;
+	\item dictionary.py - файл, содержащий функции работы со словарями и методы поиска в словаре;
+	\item test\_func.py - файл, содержащий функции сравнительного анализа указанных алгоритмов;
+	\item graph\_result.py - файл, содержащий функции визуализации сравнительного анализа описанных алгоритмов.
+\end{itemize}
+
+\section{Листинги кода}
+
+Поиск полным перебором приведен в листинге \ref{lst:brute-force}, бинарный поиск - в листнге \ref{lst:binary}, сегментный поиск - в листинге \ref{lst:segment}.
+
+\begin{center}
+\captionsetup{justification=raggedright,singlelinecheck=off}
+\begin{lstlisting}[label=lst:brute-force,caption=Полный перебор]
+def brute_force(self, need):
+
+    compares = 0
+    value = None
+
+    keys = self.data.keys()
+
+    for key in keys:
+        compares += 1
+
+        if key == need:
+            value = self.data[key]
+            return compares, value
+        
+    return Dictionary.NO_RESULT, value
+\end{lstlisting} 
+\end{center}
+\begin{center}
+\captionsetup{justification=raggedright,singlelinecheck=off}
+\begin{lstlisting}[label=lst:binary,caption=Бинарный поиск]
+def binary_search(self, need, sorted_data):
+    compares = 0
+    value = None
+
+    keys = list(sorted_data)
+    left = 0
+    right = len(keys) - 1
+
+    while left <= right:
+        compares += 1
+        middle = (left + right) // 2
+        now_key = keys[middle]
+
+        if now_key < need:
+            left = middle + 1
+        elif now_key > need:
+            right = middle - 1
+        else:
+            value = sorted_data[now_key]
+            return compares, value
+        
+    return Dictionary.NO_RESULT, value
+\end{lstlisting}
+\end{center}
+\begin{center}
+\captionsetup{justification=raggedright,singlelinecheck=off}
+\begin{lstlisting}[label=lst:segment,caption=Сегментный поиск]
+def segment_data(self):
+    segments = {symbol: 0 for symbol in "ABCDEFGHIJMS12345679"}
+
+    for key in self.data:
+        segments[key[Dictionary.FIRST_SYMBOL]] += 1
+
+    segments = self.sort_values(segments)
+
+    segmented_data = {pair: dict() for pair in segments}
+
+    for key in self.data:
+        segmented_data[key[Dictionary.TITLE]].update({key: self.data[key]})
+        
+    return segmented_data
+
+def segment_search(self, need, segmented_data):
+    compares = 0
+    value = None
+
+    symbols = list(segmented_data.keys())
+
+    for symbol in symbols:
+        compares += 1
+
+        if symbol == need[Dictionary.FIRST_SYMBOL]:
+            segment_compares = 0
+
+            for key in segmented_data[symbol]:
+                segment_compares += 1
+
+                if key == need:
+                    value = segmented_data[symbol][key]
+                    return compares + segment_compares, value
+                
+            return Dictionary.NO_RESULT, value
+
+        
+    return Dictionary.NO_RESULT, value
+\end{lstlisting}
+\end{center}
+
+\section{Функциональные тесты}
+
+В таблице \ref{tbl:func_test} приведены функциональные тесты для функций программы. Все тесты пройдены успешно.
+
+\begin{center}
+    \captionsetup{justification=raggedright,singlelinecheck=off}
+    \begin{longtable}[c]{|c|c|c|c|c|}
+    \caption{Функциональные тесты\label{tbl:func_test}} \\ \hline
+		Ключ & Тип поиска & Ожидаемый результат \\
+		\hline
+		Пустой ввод &
+		Любой &
+		Сообщение об ошибке \\
+		\hline
+		A &
+		Любой &
+		Фильм не найден. \\
+		\hline
+		37 Seconds &
+		Полный перебор &
+		37 Seconds ---> TV-MA, 90 \\
+		\hline
+		Friends &
+		Бинарный &
+		Friends ---> TV-14, 11 \\
+		\hline
+		1983 &
+		Сегментный &
+		1983 ---> TV-MA, 19 \\
+		\hline
+	\end{longtable}
+\end{center}
+
+\section{Вывод}
+
+Были реализованы функции алгоритмов поиска в словаре. Было проведено функциональное тестирование указанных функций.

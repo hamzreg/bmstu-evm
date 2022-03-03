@@ -1,0 +1,17 @@
+# Object files
+*.o
+
+# Executable files
+*.pyc
+*.exe
+
+# Latex auxiliary files
+*.aux
+*.log
+*.toc
+*.gz
+*.bbl
+*.blg
+
+# VS code files
+*.json

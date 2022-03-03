@@ -1,0 +1,116 @@
+% Текст 
+\usepackage[english,russian]{babel} % Языки
+
+\usepackage{cmap} % Улучшенный поиск русских слов в полученном pdf-файле
+\usepackage[T2A]{fontenc} % Поддержка русских букв
+\usepackage[utf8]{inputenc} % Кодировка utf8
+
+\usepackage[14pt]{extsizes} % Установка 14pt (без этого тоже работает)
+
+
+% Поля
+\usepackage{geometry}
+\geometry{left=30mm}
+\geometry{right=15mm}
+\geometry{top=20mm}
+\geometry{bottom=20mm}
+
+
+% Заголовки
+\usepackage{titlesec}
+
+\titleformat{\section}{\normalsize\bfseries}
+{\thesection}{1em}{}
+
+\titlespacing*{\chapter}{0pt}{-30pt}{8pt}
+\titlespacing*{\section}{\parindent}{*4}{*4}
+\titlespacing*{\subsection}{\parindent}{*4}{*4}
+
+\usepackage{titlesec}
+\titleformat{\chapter}{\LARGE\bfseries}{\thechapter}{20pt}{\LARGE\bfseries}
+\titleformat{\section}{\Large\bfseries}{\thesection}{20pt}{\Large\bfseries}
+
+
+% Интервал
+\usepackage{setspace}
+\onehalfspacing % Полуторный интервал
+
+% Абзацный отступ
+\frenchspacing
+\usepackage{indentfirst}
+
+
+% Листинг кода [Python]:
+\usepackage{listings}
+\usepackage{xcolor}
+
+\lstset{ %
+	language=python,   					% выбор языка для подсветки	
+	basicstyle=\small\sffamily,			% размер и начертание шрифта для подсветки кода
+	numbers=left,						% где поставить нумерацию строк (слева\справа)
+	%numberstyle=,					% размер шрифта для номеров строк
+	stepnumber=1,						% размер шага между двумя номерами строк
+	numbersep=5pt,						% как далеко отстоят номера строк от подсвечиваемого кода
+	frame=single,						% рисовать рамку вокруг кода
+	tabsize=4,							% размер табуляции по умолчанию равен 4 пробелам
+	captionpos=t,						% позиция заголовка вверху [t] или внизу [b]
+	breaklines=true,					
+	breakatwhitespace=true,				% переносить строки только если есть пробел
+	escapeinside={\#*}{*)},				% если нужно добавить комментарии в коде
+	backgroundcolor=\color{white},
+}
+
+
+% PDF
+\usepackage[justification=centering]{caption} % Настройка подписей float объектов
+\usepackage[unicode,pdftex]{hyperref} % Ссылки в pdf
+\hypersetup{hidelinks}
+
+% CSV 
+\usepackage{csvsimple}
+
+% Подписи
+\captionsetup{labelsep=endash} % Объект - описание
+
+% Таблицы
+\usepackage{threeparttable}
+
+\usepackage{longtable}
+
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{floatrow}
+
+\floatsetup[longtable]{LTcapwidth=table}
+
+% Рисунки
+\usepackage{caption}
+\captionsetup[figure]{name={Рисунок}} % Рис. -> Рисунок
+
+\usepackage{float}
+\usepackage[justification=centering]{caption}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.9}
+\usetikzlibrary{datavisualization}
+\usetikzlibrary{datavisualization.formats.functions}
+\usepackage{graphicx}
+\newcommand{\img}[3] {
+    \begin{figure}[h]
+        \center{\includegraphics[height=#1]{assets/img/#2}}
+        \caption{#3}
+        \label{img:#2}
+    \end{figure}
+}
+\newcommand{\boximg}[3] {
+    \begin{figure}[h]
+        \center{\fbox{\includegraphics[height=#1]{assets/img/#2}}}
+        \caption{#3}
+        \label{img:#2}
+    \end{figure}
+}
+
+
+% Формулы
+\usepackage{amsmath}
+\newcommand{\code}[1]{\texttt{#1}} % Шрифт пишущей машинки в формулах
+

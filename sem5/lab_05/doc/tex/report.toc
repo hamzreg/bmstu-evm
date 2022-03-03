@@ -1,0 +1,15 @@
+\babel@toc {russian}{}
+\contentsline {chapter}{Введение}{3}{chapter*.2}%
+\contentsline {chapter}{\numberline {1}Основные теоретические сведения}{4}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Методология ускорения вычислений на основе ПЛИС}{4}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Оптимизация времени обработки и пропускной способности}{5}{section.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}Конвейерная обработка циклов}{6}{subsection.1.2.1}%
+\contentsline {subsection}{\numberline {1.2.2}Разворачивание циклов}{6}{subsection.1.2.2}%
+\contentsline {subsection}{\numberline {1.2.3}Потоковая обработка}{6}{subsection.1.2.3}%
+\contentsline {chapter}{\numberline {2}Функции ядра на основе индивидуального задания}{8}{chapter.2}%
+\contentsline {chapter}{\numberline {3}Режим Emulation-SW}{10}{chapter.3}%
+\contentsline {chapter}{\numberline {4}Режим Emulation-HW}{11}{chapter.4}%
+\contentsline {chapter}{\numberline {5}Режим Hardware}{14}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Обоснование результатов тестов и выводы}{18}{section.5.1}%
+\contentsline {chapter}{\numberline {6}Контрольные вопросы}{19}{chapter.6}%
+\contentsline {chapter}{Заключение}{21}{chapter*.21}%
